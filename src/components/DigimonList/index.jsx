@@ -27,11 +27,11 @@ const DigimonList = () =>{
     }
 
     const filterPage = (digimon, index, arr) =>{
-        return index < page*15 && index > page*15-15
+        return index < page*16 && index > page*16-16
     }
 
     const nextPage = () => {
-        if( page+1 <= digimonList.length%14+1 ){
+        if( page+1 <= Math.floor(digimonList.length/16) ){
             return setPage(page+1)
         }
     }

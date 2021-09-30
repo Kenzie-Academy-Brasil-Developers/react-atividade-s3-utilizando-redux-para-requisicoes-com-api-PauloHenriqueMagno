@@ -4,11 +4,11 @@ import { addDigimon, removeDigimon } from "./actions";
 export const addDigimonsThunk = (digimon,digimons,setError,setIsThere) => (dispatch) => {
     axios.get("https://digimon-api.vercel.app/api/digimon")
         .then(response => {
-            const filterDigimon = response.data.filter( dgm => dgm.name.toLowerCase()===digimon.toLowerCase())
+            const filterDigimon = response.data.filter( dgm => dgm.name.toLowerCase()===digimon.toLowerCase().trim())
 
             filterDigimon.length===0? setError(true): setError(false);
 
-            const isThere = digimons.some(dgm => dgm.name.toLowerCase() === digimon.toLowerCase())
+            const isThere = digimons.some(dgm => dgm.name.toLowerCase() === digimon.toLowerCase().trim())
 
             setIsThere(isThere);
             
