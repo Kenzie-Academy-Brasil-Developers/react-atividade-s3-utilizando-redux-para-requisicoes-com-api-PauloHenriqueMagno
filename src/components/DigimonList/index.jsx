@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
+import { useHistory } from "react-router-dom"
 
 const DigimonList = () =>{
+    const history = useHistory()
     const [digimonList, setDigimonList] = useState([])
     const [page, setPage] = useState(1)
     
@@ -16,7 +18,7 @@ const DigimonList = () =>{
 
     const ShowDigimons = digimon => {
         return (
-            <li key={digimon.name}>
+            <li key={digimon.name} onClick={()=> history.push(`/digimons/${digimon.name}`)}>
                 <img src={digimon.img} alt={digimon.name}/>
                 <h3>{digimon.name}</h3>
                 <p>Level: {digimon.level}</p>
@@ -40,12 +42,18 @@ const DigimonList = () =>{
     }
 
     return (
-        <div className="digimonList">
-            <ul>
+        <div className="digimonListPage">
+            <nav>
+                <button onClick={prevPage}>Anterior</button>
+                <button onClick={nextPage}>Proximo</button>
+            </nav>
+            <ul className="digimonList">
                 {digimonList.filter(filterPage).map(ShowDigimons)}
             </ul>
-            <button onClick={prevPage}>Anterior</button>
-            <button onClick={nextPage}>Proximo</button>
+            <nav>
+                <button onClick={prevPage}>Anterior</button>
+                <button onClick={nextPage}>Proximo</button>
+            </nav>
         </div>
     )
 }

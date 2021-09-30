@@ -8,24 +8,22 @@ const Digimons = () => {
     const dispatch = useDispatch()
     
     return (
-        <div>
-            <ul>
-                {digimons.map(digimon => {
-                    return (
-                        <li key={digimon.name}>
-                            <img src={digimon.img} alt={digimon.name}/>
-                            <h3>{digimon.name}</h3>
-                            <p>Level: {digimon.level}</p>
-                            <button 
-                                onClick={()=> dispatch(removeDigimonThunk(digimon, digimons))}
-                            >
-                                Remove digimon
-                            </button>
-                        </li>   
-                    )
-                })}
-            </ul>
-        </div>
+        <ul className="digimonList">
+            {digimons.map(digimon => {
+                return (
+                    <li key={digimon.name}>
+                        <img src={digimon.img} alt={digimon.name}/>
+                        <h3>{digimon.name}</h3>
+                        <p>Level: {digimon.level}</p>
+                        <button 
+                            onClick={()=> dispatch(removeDigimonThunk(digimon, digimons))}
+                        >
+                            Remove digimon
+                        </button>
+                    </li>   
+                )
+            })}
+        </ul>
     )
 }
   

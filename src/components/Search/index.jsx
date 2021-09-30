@@ -11,7 +11,7 @@ const Search = () => {
   const [isThere, setIsThere] = useState(false);
 
   return (
-    <div>
+    <div className="formDigimon">
       <h2>Procure pelo seu Digimon!</h2>
       <div>
         <input
@@ -27,9 +27,9 @@ const Search = () => {
         >
           Procurar
         </button>
+      </div>
         {error && <p>Digimon não foi encontrado</p>}
         {isThere && <p>Já possui esse digimon</p>}
-      </div>
     </div>
   );
 };
